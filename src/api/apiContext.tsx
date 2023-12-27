@@ -1,19 +1,36 @@
-// ApiContext.js
 import React, { createContext, useState, useEffect, useContext } from "react";
-import faker from "faker";
-const ApiContext = createContext();
+import { faker } from "@faker-js/faker";
 
-export const ApiProvider = ({ children }) => {
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+type childrenProps = {
+  children: React.ReactNode;
+};
+
+type itemType = {
+  name: string;
+  price: string;
+  discount: string;
+  category: string;
+  imageUrl: string;
+  rating: number;
+}[];
+
+const ApiContext = createContext<{ items: itemType; loading: boolean; error: any }>({
+  items: [],
+  loading: false,
+  error: null,
+});
+
+export const ApiProvider: React.FC<childrenProps> = ({ children }) => {
+  const [items, setItems] = useState<itemType>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<any>("");
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
         setLoading(true);
-        const fakeData = Array.from({ length: 10 }, () => ({
+        const fakeData: itemType = Array.from({ length: 10 }, () => ({
           name: faker.commerce.productName(),
           price: faker.commerce.price({ min: 1, max: 500 }),
           discount: faker.commerce.price({ min: 1, max: 50 }),
@@ -39,7 +56,6 @@ export const ApiProvider = ({ children }) => {
     </ApiContext.Provider>
   );
 };
-
 
 export const useApi = () => {
   const context = useContext(ApiContext);
