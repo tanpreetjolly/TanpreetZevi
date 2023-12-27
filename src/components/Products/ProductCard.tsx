@@ -7,6 +7,7 @@ type ProductProps = {
     discount: string;
     category: string;
     imageUrl: string;
+    rating: number;
   };
 };
 
@@ -19,9 +20,10 @@ const ProductCard: React.FC<ProductProps> = ({ item }) => {
         setIsHovered(false);
       }}
     >
-      <p>{item.name}</p>
-      <img src={item.imageUrl} alt="" />
-      <p>Price : {item.price}</p>
+      <p>{item?.name}</p>
+      <img src={item?.imageUrl} alt="" />
+      <p>Price : {item?.price}</p>
+      <p>{item?.rating}</p>
       <button className={isHovered ? "hovered" : "notHovered"}>
         View Product
       </button>
