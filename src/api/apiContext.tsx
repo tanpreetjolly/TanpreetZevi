@@ -1,4 +1,11 @@
-import React, { createContext, useState, useEffect, useContext } from "react";
+import React, {
+  createContext,
+  useState,
+  useEffect,
+  useContext,
+  SetStateAction,
+  Dispatch,
+} from "react";
 import { faker } from "@faker-js/faker";
 
 type childrenProps = {
@@ -14,12 +21,21 @@ type itemType = {
   rating: number;
 }[];
 
-const ApiContext = createContext<{ items: itemType; loading: boolean; error: any }>({
+type ApiContextType = {
+  items: itemType;
+  loading: boolean;
+  error: any;
+  setItems: Dispatch<SetStateAction<itemType>>;
+};
+
+const initialContextValue: ApiContextType = {
   items: [],
   loading: false,
   error: null,
-});
+  setItems: () => {},
+};
 
+const ApiContext = createContext<ApiContextType>(initialContextValue);
 export const ApiProvider: React.FC<childrenProps> = ({ children }) => {
   const [items, setItems] = useState<itemType>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -51,7 +67,7 @@ export const ApiProvider: React.FC<childrenProps> = ({ children }) => {
   }, []);
 
   return (
-    <ApiContext.Provider value={{ items, loading, error }}>
+    <ApiContext.Provider value={{ items, loading, error, setItems }}>
       {children}
     </ApiContext.Provider>
   );
