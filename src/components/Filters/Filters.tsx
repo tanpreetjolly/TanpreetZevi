@@ -3,6 +3,7 @@ import React from 'react'
 type FiltersProps = {
   maxPrice: number;
   minRating: number;
+  applyFilters: () => void;
   setMaxPrice: (maxPrice: number) => void;
   setMinRating: (minRating: number) => void;
 };
@@ -12,16 +13,19 @@ const Filters: React.FC<FiltersProps> = ({
   minRating,
   setMaxPrice,
   setMinRating,
+  applyFilters,
 }) => {
-  console.log(maxPrice)
+  console.log(maxPrice);
   const handleMinRatingChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     setMinRating(parseInt(event.target.value, 10));
+    applyFilters();
   };
 
   const handleMaxPriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMaxPrice(parseFloat(event.target.value));
+    applyFilters();
   };
 
   return (
@@ -45,4 +49,4 @@ const Filters: React.FC<FiltersProps> = ({
   );
 };
 
-export default Filters
+export default Filters;

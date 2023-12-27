@@ -1,21 +1,25 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState, useEffect } from "react";
 import { useApi } from "../../api/apiContext";
 
 type SearchProps = {
   setIsSearchFocused: (isSearchFocused: boolean) => void;
 };
 
-const Search: React.FC<SearchProps> = ({
-  setIsSearchFocused,
-}) => {
-  const { items, setItems } = useApi();
+const Search: React.FC<SearchProps> = ({ setIsSearchFocused }) => {
+  const { items, filteredItems, setFilteredItems } = useApi();
+  const [searchTerm, setSearchTerm] = useState<string>("");
+
+  useEffect(() => {
+    const filtered = items.filter((item) =>
+      item.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredItems(filtered);
+  }, [searchTerm, items, setFilteredItems]);
 
   const handleSearch = (term: string) => {
-    const filtered = items.filter((item) =>
-      item.name.toLowerCase().includes(term.toLowerCase())
-    );
-    setItems(filtered);
+    setSearchTerm(term);
   };
+
   return (
     <div>
       <input

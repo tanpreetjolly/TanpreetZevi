@@ -23,21 +23,26 @@ type itemType = {
 
 type ApiContextType = {
   items: itemType;
+  filteredItems: itemType;
   loading: boolean;
   error: any;
   setItems: Dispatch<SetStateAction<itemType>>;
+  setFilteredItems: Dispatch<SetStateAction<itemType>>;
 };
 
 const initialContextValue: ApiContextType = {
   items: [],
+  filteredItems: [],
   loading: false,
   error: null,
+  setFilteredItems: () => {},
   setItems: () => {},
 };
 
 const ApiContext = createContext<ApiContextType>(initialContextValue);
 export const ApiProvider: React.FC<childrenProps> = ({ children }) => {
   const [items, setItems] = useState<itemType>([]);
+  const [filteredItems, setFilteredItems] = useState<itemType>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>("");
 
@@ -67,7 +72,16 @@ export const ApiProvider: React.FC<childrenProps> = ({ children }) => {
   }, []);
 
   return (
-    <ApiContext.Provider value={{ items, loading, error, setItems }}>
+    <ApiContext.Provider
+      value={{
+        items,
+        loading,
+        error,
+        setItems,
+        filteredItems,
+        setFilteredItems,
+      }}
+    >
       {children}
     </ApiContext.Provider>
   );

@@ -1,16 +1,17 @@
-import React from 'react'
+import React from 'react';
 import { useApi } from "../../api/apiContext";
 import ProductCard from "./ProductCard";
 
 const Container: React.FC = () => {
-  const { items } = useApi();
+  const { filteredItems } = useApi();
+  console.log(filteredItems)
   return (
     <div>
-      {items.map((item, index) => (
-        <ProductCard key={index} item={item} />
+      {filteredItems.map((item) => (
+        <ProductCard key={item.name} item={item} />
       ))}
     </div>
   );
 };
 
-export default Container
+export default Container;

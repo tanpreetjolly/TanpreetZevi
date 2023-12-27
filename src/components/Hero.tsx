@@ -5,21 +5,25 @@ import Filters from "./Filters/Filters";
 import { useApi } from "../api/apiContext";
 
 const Hero: React.FC = () => {
-  const { items, setItems } = useApi();
+  const { items, setFilteredItems } = useApi();
   const [isSearchFocused, setIsSearchFocused] = useState<boolean>(false);
   const [minRating, setMinRating] = useState<number>(5);
   const [maxPrice, setMaxPrice] = useState<number>(0);
 
   const applyFilters = () => {
-  
+    let updatedItems = items.slice();
+    
     if (minRating > 0) {
-      setItems(items.filter((item) => item.rating >= minRating));
+      updatedItems = updatedItems.filter((item) => item.rating >= minRating);
     }
 
     if (maxPrice > 0) {
-      setItems(items.filter((item) => parseInt(item.price) <= maxPrice));
+      updatedItems = updatedItems.filter(
+        (item) => parseFloat(item.price) <= maxPrice
+      );
     }
 
+    setFilteredItems(updatedItems);
   };
 
   useEffect(() => {
@@ -36,6 +40,7 @@ const Hero: React.FC = () => {
             setMinRating={setMinRating}
             maxPrice={maxPrice}
             setMaxPrice={setMaxPrice}
+            applyFilters={applyFilters}
           />
           <Container />
         </div>
@@ -45,3 +50,4 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
+
