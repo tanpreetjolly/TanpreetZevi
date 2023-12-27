@@ -1,9 +1,16 @@
 import React, { ChangeEvent, useState } from "react";
 import { useApi } from "../../api/apiContext";
 
-const Search: React.FC = () => {
+type SearchProps = {
+  isSearchFocused: boolean;
+  setIsSearchFocused: (isSearchFocused: boolean) => void;
+};
+
+const Search: React.FC<SearchProps> = ({
+  isSearchFocused,
+  setIsSearchFocused,
+}) => {
   const { items, setItems } = useApi();
-  const [isSearchFocused, setIsSearchFocused] = useState<boolean>(false);
 
   const handleSearch = (term: string) => {
     const filtered = items.filter((item) =>
