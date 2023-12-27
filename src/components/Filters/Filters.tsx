@@ -1,11 +1,14 @@
 import React from 'react'
 
-type Props = {}
+type FiltersProps = {
+  maxPrice: number;
+  minRating: number;
+  setMaxPrice: (maxPrice: number) => void;
+  setMinRating: (minRating: number) => void;
+};
 
-const Filters = (props: Props) => {
-  return (
-    <div>Filters</div>
-  )
-}
+const Filters: React.FC<FiltersProps> = () => {
+  return <div>Filters</div>;
+};
 
 export default Filters
