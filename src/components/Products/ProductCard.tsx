@@ -1,11 +1,33 @@
-import React from 'react'
+import React, { useState } from "react";
 
-type Props = {}
+type ProductProps = {
+  item: {
+    name: string;
+    price: string;
+    discount: string;
+    category: string;
+    imageUrl: string;
+  };
+};
 
-const ProductCard = (props: Props) => {
+const ProductCard: React.FC<ProductProps> = ({ item }) => {
+  const [isHovered, setIsHovered] = useState<boolean>(false);
   return (
-    <div>ProductCard</div>
-  )
-}
+    <div
+      onMouseOver={() => setIsHovered(true)}
+      onMouseLeave={() => {
+        setIsHovered(false);
+      }}
+    >
+      <p>{item.name}</p>
+      <img src={item.imageUrl} alt="" />
+      <p>Price : {item.price}</p>
+      <button className={isHovered ? "hovered" : "notHovered"}>
+        View Product
+      </button>
+      <button>Heart</button>
+    </div>
+  );
+};
 
-export default ProductCard
+export default ProductCard;
