@@ -1,0 +1,40 @@
+@import '../../sass/variables.sass';
+.filters-container{
+  width: 200px;
+  padding: 0.5rem;
+
+  h2{
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+
+  .ratings{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    span{
+      font-size: 1.1rem;
+    }
+
+    div{
+      color: gold;
+      .star{
+        cursor: pointer;
+      }
+    }
+  }
+
+  .price {
+    input{
+      width: 100%;
+      height: 6px;
+      border: none;
+      cursor: pointer;
+
+    
+    }
+  }
+  
+}

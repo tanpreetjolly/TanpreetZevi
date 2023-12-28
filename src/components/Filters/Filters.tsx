@@ -1,5 +1,6 @@
 import React from "react";
 import { FaStar } from "react-icons/fa6";
+import "./Filters.scss";
 
 type FiltersProps = {
   maxPrice: number;
@@ -28,38 +29,42 @@ const Filters = ({
   };
 
   return (
-    <div>
+    <div className="filters-container">
       <h2>Latest Trends</h2>
-      <label>
-        Min Rating:
-        {[5,4,3,2,1].map((rating) => (
-          <>
-            <div
-              role="button"
-              key={rating}
-              className={minRating >= rating ? "selected" : ""}
-              onClick={() => handleMinRatingChange(rating)}
-            >
-              {Array(rating)
-                .fill(null)
-                .map((_, index) => (
-                  <FaStar key={index} />
-                ))}
-            </div>
-          </>
-        ))}
+      <label className="ratings">
+        <span>Min Rating:</span>
+        <div>
+          {[5, 4, 3, 2, 1].map((rating) => (
+            <>
+              <div
+                role="button"
+                key={rating}
+                className={minRating >= rating ? "selected" : ""}
+                onClick={() => handleMinRatingChange(rating)}
+              >
+                {Array(rating)
+                  .fill(null)
+                  .map((_, index) => (
+                    <FaStar key={index} className="star"/>
+                  ))}
+              </div>
+            </>
+          ))}
+        </div>
       </label>
       <br />
-      <label>
-        Max Price:
-        <input
-          type="range"
-          min={0}
-          max={500}
-          value={maxPrice}
-          onChange={handleMaxPriceChange}
-        />
-        <span>{maxPrice}</span>
+      <label className="price">
+        <span>Max Price:</span>
+        <div>
+          <input
+            type="range"
+            min={1}
+            max={500}
+            value={maxPrice}
+            onChange={handleMaxPriceChange}
+          />
+          <span>{maxPrice}</span>
+        </div>
       </label>
     </div>
   );

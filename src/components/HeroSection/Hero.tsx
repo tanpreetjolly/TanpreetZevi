@@ -9,7 +9,7 @@ const Hero: React.FC = () => {
   const { items, setFilteredItems } = useApi();
   const [isSearchFocused, setIsSearchFocused] = useState<boolean>(false);
   const [minRating, setMinRating] = useState<number>(1);
-  const [maxPrice, setMaxPrice] = useState<number>(0);
+  const [maxPrice, setMaxPrice] = useState<number>(500);
 
   const applyFilters = () => {
     let updatedItems = items.slice();
