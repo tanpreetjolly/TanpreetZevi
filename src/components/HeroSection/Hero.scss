@@ -2,7 +2,7 @@
 
 .hero{
   height: 90vh;
-  width: 85%;
+  max-width: clamp(600px, 100%, 1400px);
   margin:2% auto;
   padding: 1rem;
   display: flex;
