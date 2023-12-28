@@ -1,4 +1,5 @@
 @import '../../sass/variables.sass';
+
 .filters-container{
   width: 200px;
   padding: 0.5rem;
@@ -19,7 +20,7 @@
     }
 
     div{
-      color: gold;
+      color: $ratings-color;
       .star{
         cursor: pointer;
       }
