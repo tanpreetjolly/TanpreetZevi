@@ -1,5 +1,7 @@
 import React, { ChangeEvent, useState, useEffect } from "react";
 import { useApi } from "../../api/apiContext";
+import "./Search.scss"
+import { FiSearch } from "react-icons/fi";
 
 type SearchProps = {
   setIsSearchFocused: (isSearchFocused: boolean) => void;
@@ -21,7 +23,7 @@ const Search: React.FC<SearchProps> = ({ setIsSearchFocused }) => {
   };
 
   return (
-    <div>
+    <div className="search-container">
       <input
         type="text"
         onChange={(e: ChangeEvent<HTMLInputElement>) =>
@@ -30,6 +32,7 @@ const Search: React.FC<SearchProps> = ({ setIsSearchFocused }) => {
         placeholder="Search"
         onFocus={() => setIsSearchFocused(true)}
       />
+      <FiSearch className="search-icon"/>
     </div>
   );
 };
