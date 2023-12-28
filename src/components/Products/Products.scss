@@ -20,8 +20,46 @@
 
     .product-card{
       outline : 2px solid green;
-      // max-width: 300px;
       overflow: hidden;
+      padding: 0.25rem;
+      min-height: 20rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+
+      .img{
+        max-width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        border-radius: 0.25rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .name{
+        font-size: 1.25rem;
+        font-weight: 500;
+      }
+
+      .money{
+        display: flex;
+        gap: 0.25rem;
+        align-items: center;
+      }
+      .price{
+        text-decoration: line-through;
+        font-size: 1.1rem;
+        font-weight: 400;
+      }
+
+      .discount{
+        color: #6D84FF;
+        font-size: 1.25rem;
+        font-weight: 500;
+      }
+
+      .rating{
+        color: gold;
+      }
     }
 }
 

@@ -1,4 +1,6 @@
-import { useState } from "react";``
+import { useState } from "react";
+import { FaStar } from "react-icons/fa6";
+
 type ProductProps = {
   item: {
     name: string;
@@ -20,10 +22,24 @@ const ProductCard = ({ item }: ProductProps) => {
         setIsHovered(false);
       }}
     >
-      <p className="name">{item?.name}</p>
       <img src={item?.imageUrl} alt="" className="img" />
-      <p className="price">Price : {item?.price}</p>
-      <p>{item?.rating}</p>
+      <p className="name">{item?.name}</p>
+      <div className="money">
+        <p className="price">Rs.{item?.price}</p>
+        <p className="discount">
+          Rs.
+          {parseInt(item?.price) -
+            (parseInt(item?.price) * parseInt(item?.discount)) / 100}
+        </p>
+      </div>
+
+      <div className="rating">
+        {Array(item.rating)
+          .fill(null)
+          .map((_, index) => (
+            <FaStar key={index} />
+          ))}
+      </div>
       <button className={isHovered ? "hovered" : "notHovered"}>
         View Product
       </button>
