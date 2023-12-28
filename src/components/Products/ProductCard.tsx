@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaStar } from "react-icons/fa6";
+import { FaStar, FaHeart } from "react-icons/fa6";
 
 type ProductProps = {
   item: {
@@ -14,6 +14,7 @@ type ProductProps = {
 
 const ProductCard = ({ item }: ProductProps) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
+  const [isHearted, setIsHearted] = useState<boolean>(false);
   return (
     <div
       className="product-card"
@@ -31,7 +32,8 @@ const ProductCard = ({ item }: ProductProps) => {
           {Math.floor(
             parseFloat(item?.price) -
               (parseFloat(item?.price) * parseFloat(item?.discount)) / 100
-          )}.00
+          )}
+          .00
         </p>
       </div>
 
@@ -42,10 +44,15 @@ const ProductCard = ({ item }: ProductProps) => {
             <FaStar key={index} />
           ))}
       </div>
-      <button className={isHovered ? "hovered" : "notHovered"}>
-        View Product
-      </button>
-      <button>Heart</button>
+      <div role="button" className={`button ${isHovered ? "hovered" : "notHovered"}`}>
+        <span>View Product</span>
+      </div>
+      <FaHeart
+        className={`wishlist-icon ${isHearted ? "hearted" : "notHearted"}`}
+        onClick={() => {
+          setIsHearted(!isHearted);
+        }}
+      />
     </div>
   );
 };
