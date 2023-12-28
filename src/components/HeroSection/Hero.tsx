@@ -39,6 +39,7 @@ const Hero= () => {
 
   useEffect(() => {
     applyFilters();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [minRating, maxPrice]);
   
   useEffect(() => {
