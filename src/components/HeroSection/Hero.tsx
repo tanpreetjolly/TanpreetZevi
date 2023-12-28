@@ -33,7 +33,6 @@ const Hero: React.FC = () => {
   return (
     <div className="hero">
       <Search setIsSearchFocused={setIsSearchFocused} />
-      <button onClick={()=>{setIsSearchFocused(false)}}>Close</button>
       {isSearchFocused && (
         <div>
           <Filters
@@ -43,7 +42,7 @@ const Hero: React.FC = () => {
             setMaxPrice={setMaxPrice}
             applyFilters={applyFilters}
           />
-          <Container />
+          <Container setIsSearchFocused={setIsSearchFocused} />
         </div>
       )}
     </div>
