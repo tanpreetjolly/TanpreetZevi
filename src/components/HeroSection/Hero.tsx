@@ -34,25 +34,28 @@ const Hero: React.FC = () => {
   return (
     <div className="hero">
       <Search setIsSearchFocused={setIsSearchFocused} />
-      {isSearchFocused && (
-        <div className="parent-container">
-          <IoIosCloseCircle
-            className="close-icon"
-            type="button"
-            onClick={() => {
-              setIsSearchFocused(false);
-            }}
-          />
-          <Filters
-            minRating={minRating}
-            setMinRating={setMinRating}
-            maxPrice={maxPrice}
-            setMaxPrice={setMaxPrice}
-            applyFilters={applyFilters}
-          />
-          <Container/>
-        </div>
-      )}
+
+      <div
+        className={`parent-container ${
+          isSearchFocused ? "visible" : "notVisible"
+        }`}
+      >
+        <IoIosCloseCircle
+          className="close-icon"
+          type="button"
+          onClick={() => {
+            setIsSearchFocused(false);
+          }}
+        />
+        <Filters
+          minRating={minRating}
+          setMinRating={setMinRating}
+          maxPrice={maxPrice}
+          setMaxPrice={setMaxPrice}
+          applyFilters={applyFilters}
+        />
+        <Container />
+      </div>
     </div>
   );
 };

@@ -20,9 +20,9 @@
     margin: 1rem;
     padding: 1rem;
     width: 100%;
-    -webkit-box-shadow: 1px 1px 8px 3px rgba(173,173,173,1);
-    -moz-box-shadow: 1px 1px 8px 3px rgba(173,173,173,1);
-    box-shadow: 1px 1px 8px 3px rgba(173,173,173,1);
+    -webkit-box-shadow: 0.5px 0.5px 6px 2px rgba(228, 228, 228, 0.735);
+    -moz-box-shadow: 0.5px 0.5px 6px 2px rgba(173,173,173,1);
+    box-shadow: 0.5px 0.5px 6px 2px rgba(173,173,173,1);
 
     .close-icon{
       position: absolute;
@@ -33,5 +33,13 @@
       cursor: pointer;
       color: $secondary-dark;
     }
+  }
+
+  .visible{
+    display: flex;
+  }
+
+  .notVisible{
+    display: none;
   }
 }
