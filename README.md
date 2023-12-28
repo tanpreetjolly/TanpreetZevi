@@ -1,5 +1,5 @@
 ## Project Structure
-![Img](./src/assets/img/component-flow.png)
+![Img](src/assets/img/component-flow.png)
 
 
 ## Available Scripts
