@@ -1,7 +1,3 @@
-## Project Structure
-![Img](src/assets/img/component-flow.png)
-
-
 ## Available Scripts
 
 In the project directory, you can run:
