@@ -29,6 +29,7 @@ const Filters = ({
 
   return (
     <div>
+      <h2>Latest Trends</h2>
       <label>
         Min Rating:
         {[5,4,3,2,1].map((rating) => (

@@ -27,9 +27,11 @@ const ProductCard = ({ item }: ProductProps) => {
       <div className="money">
         <p className="price">Rs.{item?.price}</p>
         <p className="discount">
-          Rs.
-          {parseInt(item?.price) -
-            (parseInt(item?.price) * parseInt(item?.discount)) / 100}
+          Rs
+          {Math.floor(
+            parseFloat(item?.price) -
+              (parseFloat(item?.price) * parseFloat(item?.discount)) / 100
+          )}.00
         </p>
       </div>
 
