@@ -3,6 +3,7 @@ import Search from "../SearchBar/Search";
 import Container from "../Products/ProductsContainer";
 import Filters from "../Filters/Filters";
 import { useApi } from "../../api/apiContext";
+import { IoIosCloseCircle } from "react-icons/io";
 
 const Hero: React.FC = () => {
   const { items, setFilteredItems } = useApi();
@@ -34,7 +35,14 @@ const Hero: React.FC = () => {
     <div className="hero">
       <Search setIsSearchFocused={setIsSearchFocused} />
       {isSearchFocused && (
-        <div>
+        <div className="parent-container">
+          <IoIosCloseCircle
+            className="close-icon"
+            type="button"
+            onClick={() => {
+              setIsSearchFocused(false);
+            }}
+          />
           <Filters
             minRating={minRating}
             setMinRating={setMinRating}
