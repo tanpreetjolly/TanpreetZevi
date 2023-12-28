@@ -3,7 +3,7 @@
 .products-container{
     position: relative;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     gap:1rem;
     margin: 0 auto;
     max-width: 1200px;
@@ -11,6 +11,18 @@
     width: 100%;
     margin-top: 1rem;
 
+    @media screen and (min-width: $tablet) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media screen and (min-width: $desktop) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media screen and (min-width: $largeDesktop) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  
     .close-icon{
         position: absolute;
         top: 0;
