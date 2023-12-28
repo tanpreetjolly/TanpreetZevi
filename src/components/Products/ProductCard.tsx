@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 type ProductProps = {
   item: {
@@ -11,7 +11,7 @@ type ProductProps = {
   };
 };
 
-const ProductCard: React.FC<ProductProps> = ({ item }) => {
+const ProductCard = ({ item }: ProductProps) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   return (
     <div

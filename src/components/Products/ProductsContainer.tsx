@@ -2,12 +2,11 @@ import React from 'react';
 import { useApi } from "../../api/apiContext";
 import ProductCard from "./ProductCard";
 
-const Container: React.FC = () => {
-  const { filteredItems } = useApi();
-  console.log(filteredItems)
+const Container = () => {
+  const { filteredItems, loading } = useApi();
   return (
     <div>
-      {filteredItems.map((item) => (
+      {!loading && filteredItems.map((item) => (
         <ProductCard key={item.name} item={item} />
       ))}
     </div>

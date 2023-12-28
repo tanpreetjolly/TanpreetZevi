@@ -1,9 +1,9 @@
 import React from "react";
 import "./App.scss";
 import { ApiProvider } from "./api/apiContext";
-import Hero from "./components/Hero";
+import Hero from "./components/HeroSection/Hero";
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <>
       <ApiProvider>

@@ -8,14 +8,14 @@ type FiltersProps = {
   setMinRating: (minRating: number) => void;
 };
 
-const Filters: React.FC<FiltersProps> = ({
+const Filters = ({
   maxPrice,
   minRating,
   setMaxPrice,
   setMinRating,
   applyFilters,
-}) => {
-  console.log(maxPrice);
+}: FiltersProps) => {
+  
   const handleMinRatingChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {

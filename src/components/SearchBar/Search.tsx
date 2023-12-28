@@ -6,7 +6,7 @@ type SearchProps = {
 };
 
 const Search: React.FC<SearchProps> = ({ setIsSearchFocused }) => {
-  const { items, filteredItems, setFilteredItems } = useApi();
+  const { items, setFilteredItems } = useApi();
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   useEffect(() => {

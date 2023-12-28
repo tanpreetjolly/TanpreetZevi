@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Search from "./SearchBar/Search";
-import Container from "./Products/ProductsContainer";
-import Filters from "./Filters/Filters";
-import { useApi } from "../api/apiContext";
+import Search from "../SearchBar/Search";
+import Container from "../Products/ProductsContainer";
+import Filters from "../Filters/Filters";
+import { useApi } from "../../api/apiContext";
 
 const Hero: React.FC = () => {
   const { items, setFilteredItems } = useApi();
@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
 
   const applyFilters = () => {
     let updatedItems = items.slice();
-    
+
     if (minRating > 0) {
       updatedItems = updatedItems.filter((item) => item.rating >= minRating);
     }
@@ -31,7 +31,7 @@ const Hero: React.FC = () => {
   }, [minRating, maxPrice]);
 
   return (
-    <div>
+    <div className="hero">
       <Search setIsSearchFocused={setIsSearchFocused} />
       {isSearchFocused && (
         <div>
@@ -50,4 +50,3 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
-
