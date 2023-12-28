@@ -1,4 +1,5 @@
-import React from 'react'
+import React from "react";
+import { FaStar } from "react-icons/fa6";
 
 type FiltersProps = {
   maxPrice: number;
@@ -16,10 +17,8 @@ const Filters = ({
   applyFilters,
 }: FiltersProps) => {
   
-  const handleMinRatingChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setMinRating(parseInt(event.target.value, 10));
+  const handleMinRatingChange = (rating: number) => {
+    setMinRating(rating);
     applyFilters();
   };
 
@@ -32,18 +31,34 @@ const Filters = ({
     <div>
       <label>
         Min Rating:
-        <select value={minRating} onChange={handleMinRatingChange}>
-          {[1, 2, 3, 4, 5].map((rating) => (
-            <option key={rating} value={rating}>
-              {rating}
-            </option>
-          ))}
-        </select>
+        {[5,4,3,2,1].map((rating) => (
+          <>
+            <div
+              role="button"
+              key={rating}
+              className={minRating >= rating ? "selected" : ""}
+              onClick={() => handleMinRatingChange(rating)}
+            >
+              {Array(rating)
+                .fill(null)
+                .map((_, index) => (
+                  <FaStar key={index} />
+                ))}
+            </div>
+          </>
+        ))}
       </label>
       <br />
       <label>
         Max Price:
-        <input type="number" value={maxPrice} onChange={handleMaxPriceChange} />
+        <input
+          type="range"
+          min={0}
+          max={500}
+          value={maxPrice}
+          onChange={handleMaxPriceChange}
+        />
+        <span>{maxPrice}</span>
       </label>
     </div>
   );
