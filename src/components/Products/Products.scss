@@ -2,17 +2,33 @@
 
 .products-container{
     position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:1rem;
     margin: 0 auto;
     max-width: 1200px;
-    padding: 0 15px;
+    padding: 1rem;
     width: 100%;
+    outline : 2px solid red;
+    margin-top: 1rem;
 
     .close-icon{
         position: absolute;
         top: 0;
         right: 0;
     }
+
+    .product-card{
+      outline : 2px solid green;
+      // max-width: 300px;
+      overflow: hidden;
+    }
+}
+
+.hovered{
+  display: flex;
+}
+
+.notHovered{
+  display: none;
 }

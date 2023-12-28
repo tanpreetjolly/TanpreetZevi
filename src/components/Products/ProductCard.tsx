@@ -1,5 +1,4 @@
-import { useState } from "react";
-
+import { useState } from "react";``
 type ProductProps = {
   item: {
     name: string;
@@ -15,14 +14,15 @@ const ProductCard = ({ item }: ProductProps) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   return (
     <div
+      className="product-card"
       onMouseOver={() => setIsHovered(true)}
       onMouseLeave={() => {
         setIsHovered(false);
       }}
     >
-      <p>{item?.name}</p>
-      <img src={item?.imageUrl} alt="" />
-      <p>Price : {item?.price}</p>
+      <p className="name">{item?.name}</p>
+      <img src={item?.imageUrl} alt="" className="img" />
+      <p className="price">Price : {item?.price}</p>
       <p>{item?.rating}</p>
       <button className={isHovered ? "hovered" : "notHovered"}>
         View Product
