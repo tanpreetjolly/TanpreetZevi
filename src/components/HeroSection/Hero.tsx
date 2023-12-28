@@ -7,7 +7,7 @@ import { useApi } from "../../api/apiContext";
 const Hero: React.FC = () => {
   const { items, setFilteredItems } = useApi();
   const [isSearchFocused, setIsSearchFocused] = useState<boolean>(false);
-  const [minRating, setMinRating] = useState<number>(5);
+  const [minRating, setMinRating] = useState<number>(1);
   const [maxPrice, setMaxPrice] = useState<number>(0);
 
   const applyFilters = () => {
@@ -33,6 +33,7 @@ const Hero: React.FC = () => {
   return (
     <div className="hero">
       <Search setIsSearchFocused={setIsSearchFocused} />
+      <button onClick={()=>{setIsSearchFocused(false)}}>Close</button>
       {isSearchFocused && (
         <div>
           <Filters
