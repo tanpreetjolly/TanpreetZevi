@@ -40,7 +40,7 @@ const initialContextValue: ApiContextType = {
 };
 
 const ApiContext = createContext<ApiContextType>(initialContextValue);
-export const ApiProvider: React.FC<childrenProps> = ({ children }) => {
+export const ApiProvider = ({ children }: childrenProps) => {
   const [items, setItems] = useState<itemType>([]);
   const [filteredItems, setFilteredItems] = useState<itemType>([]);
   const [loading, setLoading] = useState<boolean>(false);

@@ -7,7 +7,7 @@ type SearchProps = {
   setIsSearchFocused: (isSearchFocused: boolean) => void;
 };
 
-const Search: React.FC<SearchProps> = ({ setIsSearchFocused }) => {
+const Search = ({ setIsSearchFocused }: SearchProps) => {
   const { items, setFilteredItems } = useApi();
   const [searchTerm, setSearchTerm] = useState<string>("");
 
@@ -32,7 +32,7 @@ const Search: React.FC<SearchProps> = ({ setIsSearchFocused }) => {
         placeholder="Search"
         onFocus={() => setIsSearchFocused(true)}
       />
-      <FiSearch className="search-icon"/>
+      <FiSearch className="search-icon" />
     </div>
   );
 };

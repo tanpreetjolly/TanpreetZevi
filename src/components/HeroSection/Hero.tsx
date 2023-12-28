@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Search from "../SearchBar/Search";
 import Container from "../Products/ProductsContainer";
 import Filters from "../Filters/Filters";
 import { useApi } from "../../api/apiContext";
 import { IoIosCloseCircle } from "react-icons/io";
 
-const Hero: React.FC = () => {
+const Hero= () => {
   const { items, setFilteredItems } = useApi();
   const [isSearchFocused, setIsSearchFocused] = useState<boolean>(false);
   const [minRating, setMinRating] = useState<number>(1);
   const [maxPrice, setMaxPrice] = useState<number>(500);
-
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  
   const applyFilters = () => {
     let updatedItems = items.slice();
 
@@ -27,10 +28,26 @@ const Hero: React.FC = () => {
     setFilteredItems(updatedItems);
   };
 
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      containerRef.current &&
+      !containerRef.current.contains(event.target as Node)
+    ) {
+      setIsSearchFocused(false);
+    }
+  };
+
   useEffect(() => {
     applyFilters();
   }, [minRating, maxPrice]);
-
+  
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [containerRef]);
+  
   return (
     <div className="hero">
       <Search setIsSearchFocused={setIsSearchFocused} />
@@ -39,6 +56,7 @@ const Hero: React.FC = () => {
         className={`parent-container ${
           isSearchFocused ? "visible" : "notVisible"
         }`}
+        ref={containerRef}
       >
         <IoIosCloseCircle
           className="close-icon"
