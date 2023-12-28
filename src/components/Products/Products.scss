@@ -3,14 +3,13 @@
 .products-container{
     position: relative;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap:1rem;
     margin: 0 auto;
     max-width: 1200px;
     padding: 1rem;
     width: 100%;
     margin-top: 1rem;
-    min-width: auto;
 
     .close-icon{
         position: absolute;

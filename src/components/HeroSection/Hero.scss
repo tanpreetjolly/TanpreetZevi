@@ -1,15 +1,14 @@
 @import "../../sass/variables.sass";
 
 .hero{
-  outline: 2px solid red;
-  padding: 1rem;
   height: 90vh;
-  width: 70%;
+  width: 85%;
   margin:2% auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 
   .parent-container{
     border-radius: 1rem;
