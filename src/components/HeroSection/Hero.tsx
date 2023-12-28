@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
             setMaxPrice={setMaxPrice}
             applyFilters={applyFilters}
           />
-          <Container setIsSearchFocused={setIsSearchFocused} />
+          <Container/>
         </div>
       )}
     </div>

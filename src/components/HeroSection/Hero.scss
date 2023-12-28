@@ -1,3 +1,5 @@
+@import "../../sass/variables.sass";
+
 .hero{
   outline: 2px solid red;
   padding: 1rem;
@@ -10,6 +12,7 @@
   overflow: scroll;
 
   .parent-container{
+    border-radius: 1rem;
     background: white;
     position: relative;
     display: flex;
@@ -22,6 +25,9 @@
       top: 1rem;
       right: 1rem;
       font-size: 1.5rem;
+      z-index: 10;
+      cursor: pointer;
+      color: $secondary-dark;
     }
   }
 }
